@@ -1,50 +1,41 @@
+
 $(function() {
-    $( ".paddle" ).keypress(function() {
-        console.log( "Handler for .keypress() called." );
-    });
+    $('.start').on('click', function (event) {
 
-    var start = false;
+        if( !$(this).hasClass('stop') ) {
+            var x = event.clientX;
+            var x2 = x;
+            startGame(x, x2);
+            $(this).addClass('stop');
+        };
 
-    // x coordinate of mouse
-    $(document).on('click', function (event) {
-        var x = event.clientX;
-        var x2 = x;
-
-        startGame(x, x2);
     });
 });
 
 function startGame(x, x2) {
     $(document).on('mousemove', function (event) {
-
         x = event.clientX;
-        moveAmount = math.abs(x - x2);
-
-        if (x - x2 > 0) {
-            movePaddle("right", moveAmount);
-        } else if (x - x2 < 0) {
-            movePaddle("left", moveAmount);
-        }
+        moveAmount = x - x2;
         x2 = x;
+        movePaddle(moveAmount);
     });
 }
 
-function movePaddle(direction, moveAmount) {
+function movePaddle(moveAmount) {
 
     var position = parseInt( $(".paddle").css("left") );
-    var newPosition;
+    var newPosition = position + moveAmount;
 
-    if( direction == "right" ) {
+    var paddleWidth = parseInt( $('.paddle').css("width") );
+    var gameWidth = parseInt( $('.game').css("width") );
 
-        newPosition = position + moveAmount;
+    var leftBoundary = 0;
+    var rightBoundary = gameWidth - paddleWidth;
+
+    if ( newPosition > leftBoundary &&
+         newPosition < rightBoundary
+    ) {
         $(".paddle").css( "left", newPosition);
         position = $(".paddle").css("left");
-
-    } else if ( direction == "left" ) {
-
-        newPosition = position - 10;
-        $(".paddle").css( "left", newPosition);
-        position = $(".paddle").css("left");
-
     }
 }
