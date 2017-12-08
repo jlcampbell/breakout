@@ -14,8 +14,8 @@ $(function () {
         x += dx;
         y += dy;
 
-        ball.style.left = ""+x+"px";
-        ball.style.top = ""+y+"px";
+        ball.style.left = x + "px";
+        ball.style.top = y + "px";
 
         if(x + dx > bounceArea.scrollWidth || x + dx < 0) {
             dx = -dx;
