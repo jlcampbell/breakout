@@ -19,20 +19,22 @@ var dx = 1;
 var dy = -2;
 function draw() {
 
-x += dx;
-y += dy;
-ball.style.left = ""+x+"px";
-//console.log(ball.style.left);
-ball.style.top = ""+y+"px";
-//console.log(ball.style.top);
-console.log(bounceArea.style.scrollHeight)
-if(x + dx > bounceArea.scrollWidth || x + dx < 0) {
-    dx = -dx;
-}
+    x += dx;
+    y += dy;
 
-if(y + dy > bounceArea.scrollHeight || y + dy < 0) {
-    dy = -dy;
-}
+    ball.style.left = ""+x+"px";
+    //console.log(ball.style.left);
+    ball.style.top = ""+y+"px";
+    //console.log(ball.style.top);
+    console.log(bounceArea.style.scrollHeight)
+
+    if(x + dx > bounceArea.scrollWidth || x + dx < 0) {
+        dx = -dx;
+    }
+
+    if(y + dy > bounceArea.scrollHeight || y + dy < 0) {
+        dy = -dy;
+    }
 }
 setInterval(draw, 10);
 </script>
