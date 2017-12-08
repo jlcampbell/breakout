@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+}
+
+.game {
+    background: #333;
+    height: 100vh;
+    position: relative;
+    width: 100vw;
+}
+
+.paddle {
+    background: #ccc;
+    bottom: 0;
+    height: 2rem;
+    left: calc(45%);
+    position: absolute;
+    width: 10%;
+}
