@@ -1,0 +1,14 @@
+.bounceArea{
+  width: 500px;
+  height: 500px;
+  border: 4px black solid;
+  position: relative;
+}
+.ball{
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: black;
+  position: absolute;
+
+}
