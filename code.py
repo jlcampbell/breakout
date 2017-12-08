@@ -1,5 +1,5 @@
 from adafruit_hid.mouse import Mouse
-from tilt import Tilt
+
 from adafruit_circuitplayground.express import cpx
 import math
 
