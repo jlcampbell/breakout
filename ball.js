@@ -1,4 +1,4 @@
-$(function () {
+function dropBall() {
 
     var bounceArea = document.getElementById("bounceArea");
     var ball = document.getElementById("ball");
@@ -9,7 +9,9 @@ $(function () {
     var dx = 1;
     var dy = -2;
 
-    function draw() {
+    setInterval(bounce, 10);
+
+    function bounce() {
 
         x += dx;
         y += dy;
@@ -17,13 +19,28 @@ $(function () {
         ball.style.left = x + "px";
         ball.style.top = y + "px";
 
-        if(x + dx > bounceArea.scrollWidth || x + dx < 0) {
-            dx = -dx;
+        var paddleHeight = parseInt( $('.paddle').css("height") );
+        var paddlePosition = parseInt( $(".paddle").css("left") );
+        var paddleWidth = parseInt( $('.paddle').css("width") );
+
+        if( y + dy > bounceArea.scrollHeight - paddleHeight ) {
+
+            if( x > paddlePosition &&
+                x < paddlePosition + paddleWidth
+            ) {
+                dy = -dy;
+
+            } else if( y + dy > bounceArea.scrollHeight ) {
+                alert("GAME OVER");
+                document.location.reload();
+            }
         }
-        if(y + dy > bounceArea.scrollHeight || y + dy < 0) {
-            dy = -dy;
+        if( x + dx > bounceArea.scrollWidth || x + dx < 0 ) {
+            dx = Math.abs(dx) < 8 ? -dx * 1.2 : -dx;
+        }
+        if( y + dy < 0 ) {
+            dy = Math.abs(dy) < 16 ? dy = -dy * 1.2 : -dy;
         }
     }
-    setInterval(draw, 10);
 
-});
+}

@@ -20,7 +20,7 @@ body {
     height: 2rem;
     left: calc(45%);
     position: absolute;
-    width: 10%;
+    width: 100px;
 }
 
 .ball {

@@ -6,12 +6,23 @@
     <script type="text/javascript" src="ball.js"></script>
 
     <link rel="stylesheet" type="text/css" href="brick.css">
+
+    <script>
+        $(function() {
+            $('.start').on('click', function (event) {
+                var mousePosition = event.clientX;
+                attachMouseToPaddle(mousePosition);
+                dropBall();
+                $(this).addClass('on').hide();
+            });
+        });
+    </script>
 </head>
 <body>
 
 <div class="game" id="bounceArea">
     <div class="bricks"></div>
-    <div class="paddle"></div>
+    <div class="paddle" id="paddle"></div>
     <button class="start">Start</button>
 </div>
 <div class="ball" id="ball"></div>
