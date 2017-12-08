@@ -18,24 +18,25 @@ function startGame(x, x2) {
     $(document).on('mousemove', function (event) {
 
         x = event.clientX;
+        moveAmount = math.abs(x - x2);
 
         if (x - x2 > 0) {
-            movePaddle("right");
+            movePaddle("right", moveAmount);
         } else if (x - x2 < 0) {
-            movePaddle("left");
+            movePaddle("left", moveAmount);
         }
         x2 = x;
     });
 }
 
-function movePaddle(direction) {
+function movePaddle(direction, moveAmount) {
 
     var position = parseInt( $(".paddle").css("left") );
     var newPosition;
 
     if( direction == "right" ) {
 
-        newPosition = position + 10;
+        newPosition = position + moveAmount;
         $(".paddle").css( "left", newPosition);
         position = $(".paddle").css("left");
 
