@@ -1,10 +1,17 @@
+
+
 function dropBall() {
 
     var bounceArea = document.getElementById("bounceArea");
     var ball = document.getElementById("ball");
 
-    var x = 60;
-    var y = 0;
+    let x = 60;
+    let y = 0;
+
+
+
+    drawBricks();
+
 
     var dx = 1;
     var dy = -2;
@@ -22,6 +29,30 @@ function dropBall() {
         var paddleHeight = parseInt( $('.paddle').css("height") );
         var paddlePosition = parseInt( $(".paddle").css("left") );
         var paddleWidth = parseInt( $('.paddle').css("width") );
+
+
+        function collisionDetection() {
+            console.log("detecting")
+
+            console.log(x);
+
+            console.log(y);
+            for(c=0; c<brickColumnCount; c++) {
+                for(r=0; r<brickRowCount; r++) {
+                    var b = bricks[c][r];
+                    if(b.status == 1) {
+                      if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                        dy = -dy;
+                        b.status = 0;
+                        console.log("collision");
+                        //on collision, make brick disappear
+                        document.getElementById(b.id).style.display = "none";
+                    }
+                    }
+                }
+            }
+        }
+        collisionDetection();
 
         if( y + dy > bounceArea.scrollHeight - paddleHeight ) {
 
