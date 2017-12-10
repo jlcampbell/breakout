@@ -4,6 +4,7 @@ function dropBall() {
 
     var bounceArea = document.getElementById("bounceArea");
     var ball = document.getElementById("ball");
+    var ballRadius = 10;
 
     let x = 60;
     let y = 0;
@@ -66,11 +67,13 @@ function dropBall() {
                 document.location.reload();
             }
         }
-        if( x + dx > bounceArea.scrollWidth || x + dx < 0 ) {
-            dx = Math.abs(dx) < 8 ? -dx * 1.2 : -dx;
+        if( x + dx > bounceArea.scrollWidth-ballRadius || x + dx < 0 ) {
+    //        dx = Math.abs(dx) < 8 ? -dx * 1.2 : -dx;
+              dx = -dx;
         }
         if( y + dy < 0 ) {
             dy = Math.abs(dy) < 16 ? dy = -dy * 1.2 : -dy;
+
         }
     }
 
