@@ -13,8 +13,8 @@
             $('.start').on('click', function (event) {
                 //x and y shouldn't be here but having trouble accessing them
                 //TODO move x and y
-                var x = 60;
-                var y = 0;
+                //var x = 60;
+                //var y = 0;
                 var mousePosition = event.clientX;
                 attachMouseToPaddle(mousePosition);
                 dropBall();
@@ -26,11 +26,11 @@
 <body>
 
 <div class="game" id="bounceArea">
-    
+
     <div class="paddle" id="paddle"></div>
     <button class="start">Start</button>
 </div>
 <div class="ball" id="ball"></div>
-
+<div class="score" id="score">0</div>
 </body>
 </html>

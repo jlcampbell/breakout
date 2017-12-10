@@ -5,6 +5,7 @@ function dropBall() {
     var bounceArea = document.getElementById("bounceArea");
     var ball = document.getElementById("ball");
     var ballRadius = 10;
+    var score = 0;
 
     let x = 60;
     let y = 0;
@@ -17,7 +18,8 @@ function dropBall() {
     var dx = 1;
     var dy = -2;
 
-    setInterval(bounce, 10);
+    //setInterval(bounce, 10);
+    bounce();
 
     function bounce() {
 
@@ -48,12 +50,24 @@ function dropBall() {
                         console.log("collision");
                         //on collision, make brick disappear
                         document.getElementById(b.id).style.display = "none";
+                        score++;
+                        if(score == brickRowCount*brickColumnCount) {
+                        alert("YOU WIN, CONGRATULATIONS!");
+                        document.location.reload();
+                    }
                     }
                     }
                 }
             }
         }
+
+        function drawScore() {
+          document.getElementById("score").innerHTML = score;
+          //ctx.fillText("Score: "+score, 8, 20);
+}
+        drawScore();
         collisionDetection();
+
 
         if( y + dy > bounceArea.scrollHeight - paddleHeight ) {
 
@@ -75,6 +89,7 @@ function dropBall() {
             dy = Math.abs(dy) < 16 ? dy = -dy * 1.2 : -dy;
 
         }
+        requestAnimationFrame(bounce);
     }
 
 }
