@@ -11,10 +11,6 @@
     <script>
         $(function() {
             $('.start').on('click', function (event) {
-                //x and y shouldn't be here but having trouble accessing them
-                //TODO move x and y
-                //var x = 60;
-                //var y = 0;
                 var mousePosition = event.clientX;
                 attachMouseToPaddle(mousePosition);
                 dropBall();
